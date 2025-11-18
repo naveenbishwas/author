@@ -257,32 +257,34 @@ section {
 }
 
 /* ============ Hero ============ */
+/* ============================
+      HERO SECTION
+============================ */
+
 .hero {
   position: relative;
   padding: 90px 20px 80px;
-  background: radial-gradient(circle at top, #14141f 0, #020308 50%);
   overflow: hidden;
+  background: #000; /* fallback */
 }
 
-.hero::before {
-  content: "";
+/* Background Image */
+.hero-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at right,
-    rgba(255, 92, 38, 0.18),
-    transparent 55%
-  );
-  opacity: 0.7;
+  background: url("/africa-background.webp") center/cover no-repeat;
+  filter: brightness(0.15);
+  z-index: 0;
   pointer-events: none;
 }
 
-/* wrapper that actually moves for parallax */
+/* Parallax wrapper */
 .hero-parallax {
   position: relative;
   max-width: 1180px;
   margin: 0 auto;
   will-change: transform;
+  z-index: 2;
 }
 
 .hero-inner {
@@ -292,9 +294,11 @@ section {
   align-items: center;
 }
 
-/* Hero image */
+/* ============================
+      HERO IMAGE
+============================ */
 .hero-image {
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-img-frame {
@@ -306,30 +310,26 @@ section {
   transform-origin: center left;
 }
 
-.hero-img-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.15));
-  mix-blend-mode: multiply;
-}
-
 .hero-img-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Hero text */
+/* ============================
+      HERO TEXT
+============================ */
 .hero-text {
   max-width: 540px;
+  z-index: 2;
+  color: #fff;
 }
 
 .hero-tag {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--text-muted);
+  color: #ddd;
   margin-bottom: 12px;
 }
 
@@ -338,12 +338,13 @@ section {
   line-height: 1.02;
   letter-spacing: 3px;
   margin-bottom: 18px;
+  color: #fff;
 }
 
 .hero-subtitle {
   font-size: 17px;
   line-height: 1.8;
-  color: var(--text-soft);
+  color: #e2e2e2;
   margin-bottom: 10px;
 }
 
@@ -357,10 +358,12 @@ section {
 
 .hero-secondary-text {
   font-size: 13px;
-  color: var(--text-muted);
+  color: #ccc;
 }
 
-/* Buttons */
+/* ============================
+      BUTTONS
+============================ */
 .btn-primary {
   display: inline-block;
   padding: 14px 32px;
@@ -370,36 +373,14 @@ section {
   font-weight: 600;
   font-size: 14px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
-    color 0.18s ease;
+  transition: 0.18s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   background: var(--accent);
-  color: #ffffff;
+  color: #fff;
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.9);
-}
-
-.btn-outline {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 11px 26px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #ffffff;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
-    transform 0.18s ease;
-}
-
-.btn-outline:hover {
-  background: #ffffff;
-  color: #000;
-  border-color: #ffffff;
-  transform: translateY(-1px);
 }
 
 /* ========== ABOUT SECTION ========== */
@@ -576,109 +557,133 @@ section {
   color: var(--text-soft);
   margin-bottom: 13px;
 }
-
-/* ============ Order Section ============ */
+/* ============ Order Section Redesigned ============ */
 .order-section {
   position: relative;
-  background: url("images/hero-author.jpg") center/cover no-repeat fixed,
-    #050505;
+  background: url("/book-background.webp") center/cover no-repeat fixed, #050505;
   color: #ffffff;
+  padding: 90px 20px;
 }
 
+/* Dark gradient overlay */
 .order-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-      circle at left,
-      rgba(255, 92, 38, 0.3),
-      transparent 55%
-    ),
-    linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.88),
-      rgba(0, 0, 0, 0.88),
-      rgba(0, 0, 0, 0.9)
-    );
+  background: linear-gradient(
+    to right,
+    rgb(0 0 0 / 71%),
+    rgba(0, 0, 0, 0.85),
+    rgb(0 0 0 / 95%)
+  );
+  z-index: 1;
 }
 
+/* Grid layout */
 .order-inner {
   position: relative;
+  z-index: 2;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 90px 20px 90px;
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
-  gap: 50px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 60px;
   align-items: center;
 }
 
+/* LEFT IMAGE */
 .order-left {
   display: flex;
   justify-content: center;
 }
 
-.order-book-card {
-  position: relative;
-  width: 230px;
-  height: 320px;
-  transform: perspective(900px) rotateY(-18deg);
-  transform-origin: left center;
+.order-main-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85);
+  object-fit: cover;
 }
 
-.order-book-front,
-.order-book-spine {
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
-}
-
-.order-book-spine {
-  width: 26px;
-  left: -20px;
-  background: var(--accent);
-}
-
-.order-book-front {
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #ffffff, #f5f5f5);
-}
-
-.order-book-front h3 {
-  font-size: 28px;
-  line-height: 1.1;
-  color: #000000;
-}
-
-.order-book-front p {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #666666;
-}
-
+/* RIGHT TEXT */
 .order-right h2 {
-  font-size: 34px;
-  letter-spacing: 3px;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 2px;
   margin-bottom: 18px;
 }
 
 .order-subtitle {
-  font-size: 16px;
-  margin-bottom: 16px;
-  color: #f2f2f2;
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #eaeaea;
 }
 
 .order-right p {
-  font-size: 15px;
-  line-height: 1.9;
-  color: #dddddd;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #dcdcdc;
   margin-bottom: 18px;
+}
+
+/* Button */
+.btn-primary {
+  display: inline-block;
+  padding: 14px 34px;
+  font-weight: 700;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #000;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ============================
+   BOOK DETAIL BACKGROUND
+============================ */
+
+.book-detail {
+  position: relative;
+  background: #000; /* fallback */
+  padding: 90px 20px;
+  overflow: hidden;
+}
+
+.book-detail-bg {
+  position: absolute;
+  inset: 0;
+  background: url("/your-background-image.webp") center/cover no-repeat;
+  filter: brightness(0.45);
+  z-index: 0;
+}
+
+.book-detail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.85)
+  );
+  z-index: 1;
+}
+
+/* Make inner content above overlay */
+.book-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+  padding-top: 0;
 }
 
 /* ============ Footer ============ */
@@ -686,7 +691,7 @@ section {
   padding: 60px 20px 40px;
   text-align: center;
   background: #02030a;
-  border-top: 1px solid #11121b;
+  border-top: 1px solid #6f6f76;
 }
 
 .footer-inner {
