@@ -281,7 +281,7 @@ section {
 /* Parallax wrapper */
 .hero-parallax {
   position: relative;
-  max-width: 1180px;
+  max-width: 1250px;
   margin: 0 auto;
   will-change: transform;
   z-index: 2;
@@ -289,8 +289,9 @@ section {
 
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 106px;
+  /* grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); */
+  grid-template-columns: 1.3fr 1fr; /* was 1.05fr 1fr */
+  gap: 156px;
   align-items: center;
 }
 
@@ -306,7 +307,8 @@ section {
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-  transform: perspective(1000px) rotateY(-12deg) rotateX(5deg);
+  width: 115%;
+  transform: perspective(1500px) rotateY(-1deg) rotateX(5deg);
   transform-origin: center left;
 }
 
@@ -505,6 +507,11 @@ section {
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.75), transparent 45%);
+}
+
+.book-detail-image.reveal {
+  display: flex;
+  justify-content: c;
 }
 
 .media-text {
@@ -877,6 +884,7 @@ section {
 
 .logo-grid-inner {
   text-align: center;
+  padding-top: 0;
 }
 
 .logo-grid-heading {
@@ -932,4 +940,52 @@ section {
 .logo-item:hover img {
   filter: grayscale(0%) brightness(1);
   opacity: 1;
+}
+/* ============================
+    FULLSCREEN VIDEO SECTION
+============================ */
+.video-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  margin: 8% 0;
+}
+
+/* Video container */
+.video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Responsive video */
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+}
+
+/* Optional overlay */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  );
+  z-index: 2;
+}
+
+/* Text content (if you want it over the video later) */
+.video-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
 }
