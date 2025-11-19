@@ -76,12 +76,12 @@ section {
 }
 
 .section-label.light {
-  color: #f6f6f6;
+  /* color: #f6f6f6; */
 }
 
-.section-label.light::before {
+/* .section-label.light::before {
   background: rgba(255, 255, 255, 0.65);
-}
+} */
 
 /* ============ Animations ============ */
 @keyframes fadeIn {
@@ -953,12 +953,18 @@ section {
   margin: 8% 0;
 }
 
+.video-heading {
+  text-align: center;
+}
+
 /* Video container */
 .video-wrapper {
   position: absolute;
+  top: 20% !important;
   inset: 0;
   z-index: 1;
   overflow: hidden;
+  margin: 0 10%;
 }
 
 /* Responsive video */
